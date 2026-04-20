@@ -1,0 +1,75 @@
+body{
+    background-color:whitesmoke;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+nav ul{
+    display: flex;
+    list-style:none;
+    margin-top: 30px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: black;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover{
+    background-color: gray;
+    color: white;
+    padding: 15px;
+}
+
+#busqueda{
+    display: flex;
+    margin: 20px;
+    width: 85%;
+    max-width: 800px;
+    gap: 5px;
+}
+
+#busqueda input{
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    padding:5px
+}
+
+#busqueda button {
+    padding: 10px 20px;
+    background-color: darkcyan;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#Destacado{
+    background-color:darkcyan;
+    color: white;
+    padding-top: 5px;
+    width: 100%
+}
+
+#Destacado img{
+    width: 100%;
+    margin: auto;
+    display: block;
+}
+
+#Productos{
+    color: indigo;
+}
