@@ -1,0 +1,293 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 19 abr 2026, 3:36:32 p.m.
+    Author     : User
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
+  /*Primera parte de la navegación*/
+.navbar{
+    background: #000;
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.menu{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    
+}
+
+.menu li{
+    position: relative;
+}
+
+.menu a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    display: block;
+}
+
+.menu a:hover{
+    color:#00bfff;
+}
+
+
+/*Sub navegación*/
+.dropdown-content{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    min-width: 700px;
+    padding: 20px;
+    border-radius: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.dropdown:hover .dropdown-content {
+  display: grid;
+}
+
+.columna h4 {
+  color: #00bfff;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #00bfff;
+  padding-bottom: 5px;
+}
+
+.columna a {
+  color: #333;
+  padding: 8px 0;
+  display: block;
+}
+
+.columna a:hover {
+  color: #00bfff;
+  padding-left: 10px;
+}
+
+
+/* Banner*/
+.hero {
+    height: 520px;                    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),
+                      url('../Imagenes/hero-background.jpg');   /* ← Cambia esta ruta por una imagen real */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: -10px;   /* para que quede pegado al header si es necesario */
+}
+
+.hero-overlay {
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+}
+
+.hero-subtitle {
+    font-size: 1.35rem;
+    margin-bottom: 35px;
+    opacity: 0.95;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: #00bfff;
+    color: white;
+    padding: 16px 36px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 191, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: #0099cc;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 191, 255, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 16px 36px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 2px solid white;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #0a0a0a;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 5%;
+}
+/* 4. Grid de productos (lo más importante) */
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* 5. Tarjetas de producto - Esto es clave */
+.product-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  text-align: center;
+}
+
+.product-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
+  padding: 20px;
+  background: #f9f9f9;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.08);
+}
+
+.product-card h3 {
+  margin: 15px 0 8px;
+  font-size: 1.1rem;
+}
+
+.product-card .precio {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #00b7eb;
+}
+
+.product-card .precio-anterior {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.95rem;
+}
+
+/* 6. Etiqueta "Nuevo" */
+.nuevo {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #00b7eb;
+  color: white;
+  padding: 5px 14px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+h2,p {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #1a1a1a, #00b7eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 70px 0 40px 0;
+  letter-spacing: -2px;
+}
+
+h3 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin: 60px 0 35px 0;
+  padding: 0 20px;
+  position: relative;
+}
+
+h3.samsung {
+  color: #0a2540;
+}
+
+h3.iphone {
+  color: #1d1d1f;
+}
+
+/* Línea decorativa debajo de las marcas */
+h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  width: 60px;
+  height: 3px;
+  background: #00b7eb;
+  border-radius: 3px;
+}
