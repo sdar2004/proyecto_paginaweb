@@ -293,7 +293,18 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
 }
-h2,p {
+main h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #1a1a1a, #00b7eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 70px 0 40px 0;
+  letter-spacing: -2px;
+}
+
+main p{
   font-size: 3rem;
   font-weight: 900;
   background: linear-gradient(90deg, #1a1a1a, #00b7eb);
@@ -330,4 +341,30 @@ h3::after {
   height: 3px;
   background: #00b7eb;
   border-radius: 3px;
+}
+
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #333;
+    color: #fff;
+    padding:20px;
+}
+
+.columna{
+    width: 220px;
+}
+footer p{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color:#fff;
+}
+footer ul{
+    list-style-type: none;
+    padding:0;
+}
+footer li{
+    margin-bottom: 5px;
 }
