@@ -1,120 +1,65 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.container-atencion {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide en dos columnas iguales */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
 }
 
-body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f9fa;
-  color: #333;
-  margin-top: 80px;
-}
-
-.navbar{
-    background: #000;
-    color: white;
-    padding: 15px 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    width: 100%;
-}
-
-.logo{
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-.menu{
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    
-}
-
-.menu li{
-    position: relative;
-}
-
-.menu a{
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 10px 15px;
-    display: block;
-}
-
-.menu a:hover{
-    color:#00bfff;
-}
-
-
-/*Sub navegación*/
-.dropdown-content{
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+.form-section {
     background: white;
-    color: #333;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    min-width: 700px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.form-section h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+/* Estilo de los formularios */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+}
+
+form input, 
+form select, 
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+fieldset {
+    border: 1px solid #eee;
     padding: 20px;
     border-radius: 10px;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-.dropdown:hover .dropdown-content {
-  display: grid;
+    margin-bottom: 25px;
 }
 
-.columna h4 {
-  color: #00bfff;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #00bfff;
-  padding-bottom: 5px;
-}
-
-.columna a {
-  color: #333;
-  padding: 8px 0;
-  display: block;
-}
-
-.columna a:hover {
-  color: #00bfff;
-  padding-left: 10px;
-}
-
-footer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: #333;
-    color: #fff;
-    padding:20px;
-}
-
-.columna{
-    width: 220px;
-}
-footer p{
-    font-size: 20px;
+legend {
     font-weight: bold;
-    margin-bottom: 10px;
-    color:#fff;
+    color: #00bfff;
+    padding: 0 10px;
 }
-footer ul{
-    list-style-type: none;
-    padding:0;
-}
-footer li{
-    margin-bottom: 5px;
+
+@media (max-width: 900px) {
+    .container-atencion {
+        grid-template-columns: 1fr;
+    }
 }

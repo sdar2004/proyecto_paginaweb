@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="Vista/reclamo.css" rel="stylesheet" type="text/css"/>
+        <link href="Vista/global.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header>    
@@ -44,10 +45,91 @@
                         </div>
                     </li>
                     <li><a href="#">Ofertas</a></li>
-                    <li><a href="reclamos.html">Reclamos</a></li>
+                    <li><a href="reclamos.html">Reclamos y Sugerencias</a></li>
                 </ul>
             </nav>
         </header>
+        
+        <main class="container-atencion">
+        <section class="form-section">
+            <h2>Libro de Reclamaciones</h2>
+            <form action="#" method="POST" class="form-reclamos">
+                
+                <fieldset>
+                    <legend>Identificación del consumidor reclamante</legend>
+                    <label>Nombre:</label>
+                    <input type="text" name="nombre_reclamo" required>
+                    
+                    <label>Domicilio:</label>
+                    <input type="text" name="domicilio">
+                    
+                    <label>DNI / CE:</label>
+                    <input type="text" name="documento" required>
+                    
+                    <label>Teléfono:</label>
+                    <input type="tel" name="telefono_reclamo">
+                    
+                    <label>Correo electrónico:</label>
+                    <input type="email" name="email_reclamo" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Identificación del bien contratado</legend>
+                    <label>Tipo de Bien:</label>
+                    <select name="tipo_bien">
+                        <option value="producto">Producto</option>
+                        <option value="servicio">Servicio</option>
+                    </select>
+                    
+                    <label>Monto Reclamado:</label>
+                    <input type="number" name="monto" step="0.01">
+                    
+                    <label>Descripción:</label>
+                    <textarea name="desc_bien"></textarea>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Detalle de la reclamación</legend>
+                    <label>Tipo de Reclamación:</label>
+                    <select name="tipo_reclamo">
+                        <option value="reclamacion">Reclamación</option>
+                        <option value="queja">Queja</option>
+                    </select>
+                    
+                    <label>Detalle:</label>
+                    <textarea name="detalle_reclamo" required></textarea>
+                    
+                    <label>Pedido:</label>
+                    <textarea name="pedido_reclamo"></textarea>
+                </fieldset>
+
+                <button type="submit" class="btn-primary">ENVIAR HOJA DE RECLAMACIÓN</button>
+            </form>
+        </section>
+
+        <section class="form-section">
+            <h2>Sugerencias</h2>
+            <form action="#" method="POST" class="form-sugerencias">
+                <label>Coloque sus sugerencias:</label>
+                <textarea name="sugerencia_texto" placeholder="Escriba aquí..." required></textarea>
+
+                <label>Nombre:</label>
+                <input type="text" name="nombre_sug">
+
+                <label>Dirección:</label>
+                <input type="text" name="dir_sug">
+
+                <label>Teléfono:</label>
+                <input type="tel" name="tel_sug">
+
+                <label>Email:</label>
+                <input type="email" name="email_sug">
+
+                <button type="submit" class="btn-primary">ENVIAR</button>
+            </form>
+        </section>
+    </main>
+        
         <footer>
             <div class="Columna">
                 <p>Tienda</p>

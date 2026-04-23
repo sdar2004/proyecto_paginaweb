@@ -1,0 +1,258 @@
+/* 1. Reset y Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin-top: 80px; /* Espacio para el navbar fijo */
+}
+
+/* 2. Header y Navegación (Navbar) */
+.navbar {
+    background: #000;
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: #00bfff;
+}
+
+/* Sub navegación (Dropdown) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    min-width: 700px;
+    padding: 20px;
+    border-radius: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: grid;
+}
+
+.columna h4 {
+    color: #00bfff;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #00bfff;
+    padding-bottom: 5px;
+}
+
+.columna a {
+    color: #333;
+    padding: 8px 0;
+    display: block;
+}
+
+.columna a:hover {
+    color: #00bfff;
+    padding-left: 10px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 16px 36px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #00bfff;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 191, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: #0099cc;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 191, 255, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #0a0a0a;
+}
+
+/* 5. Tarjetas de Productos (Grid y Cards) */
+.product-grid, .grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    text-align: center;
+    position: relative; /* Importante para la etiqueta 'nuevo' */
+}
+
+.product-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+    padding: 20px;
+    background: #f9f9f9;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.08);
+}
+
+.product-card h3 {
+    margin: 15px 0 8px;
+    font-size: 1.1rem;
+    padding: 0 10px;
+}
+
+.product-card h3::after {
+    display: none; /* Quita la raya de las tarjetas */
+}
+
+.product-card .precio {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #00b7eb;
+}
+
+.product-card .precio-anterior {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.95rem;
+}
+
+.nuevo {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #00b7eb;
+    color: white;
+    padding: 5px 14px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #1a1a1a, #00b7eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin: 70px 0 40px 0;
+    letter-spacing: -2px;
+}
+
+h3.samsung, h3.iphone {
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin: 60px 0 35px 0;
+    padding: 0 20px;
+    position: relative;
+}
+
+h3.samsung { color: #0a2540; }
+h3.iphone { color: #1d1d1f; }
+
+h3.samsung::after, h3.iphone::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    width: 60px;
+    height: 3px;
+    background: #00b7eb;
+    border-radius: 3px;
+}
+
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #333;
+    color: #fff;
+    padding:20px;
+}
+
+.Columna{
+    width: 220px;
+}
+footer p{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color:#fff;
+}
+footer ul{
+    list-style-type: none;
+    padding:0;
+}
+footer li{
+    margin-bottom: 5px;
+}
