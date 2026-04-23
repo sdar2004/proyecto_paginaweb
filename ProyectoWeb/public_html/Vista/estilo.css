@@ -76,3 +76,27 @@
     66%, 94% { transform: translateX(-50%); }
     100% { transform: translateX(-75%); }
 }
+
+.product-grid a{
+    padding: 10px 20px;
+    font-size: 0.9rem;
+}
+
+.experienca-tech{
+    background: #f0f2f5; 
+    padding: 60px 20px; 
+    text-align: center;
+}
+.experienca-tech p{
+    max-width: 700px; 
+    margin: 0 auto 30px auto; 
+    color: #666;
+}
+
+.experienca-tech div{
+    max-width: 900px; 
+    margin: 0 auto; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    shadow: 0 10px 30px rgba(0,0,0,0.2);
+}

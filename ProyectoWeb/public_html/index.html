@@ -54,28 +54,73 @@
         <main>
             <div class="galeria">
                 <div class="slides">
-                    <a href="#" class="sl">
-                    <img src="Imagenes/slide1.webp" alt="Celulares">
-                    </a>
-                    <a href="#" class="sl">
-                    <img src="Imagenes/slide2.webp" alt="Laptops">
-                    </a>
-                    <a href="#" class="sl">
-                    <img src="Imagenes/slide3.webp" alt="Accesorios">
-                    </a>
-                    <a href="#" class="sl">
-                    <img src="Imagenes/slide1.webp" alt="Celulares">
-                    </a>
+                    <a href="#" class="sl"><img src="Imagenes/slide1.webp" alt="Celulares"></a>
+                    <a href="#" class="sl"><img src="Imagenes/slide2.webp" alt="Laptops"></a>
+                    <a href="#" class="sl"><img src="Imagenes/slide3.webp" alt="Accesorios"></a>
+                    <a href="#" class="sl"><img src="Imagenes/slide1.webp" alt="Celulares"></a>
                 </div>
             </div>
-            <section id="Productos">
-                <h2>Ofertas</h2>
+
+            <section id="ofertas-principales">
+                <h2>Ofertas Relámpago</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="Imagenes/samsung-galaxy-s25-ultra-sm-s938.jpg" alt="Samsung S25">
+                        <span class="nuevo">Oferta</span>
+                        <h3>Samsung Galaxy S25 Ultra</h3>
+                        <p class="precio">S/3200 <span class="precio-anterior">S/3500</span></p>
+                        <a href="catalogo.html#samsung" class="btn-primary">Ver más</a>
+                    </div>
+                    <div class="product-card">
+                        <img src="Imagenes/apple-iphone-17-pro-max.jpg" alt="Iphone 17">
+                        <span class="nuevo">Popu</span>
+                        <h3>iPhone 17 Pro Max</h3>
+                        <p class="precio">S/5500 <span class="precio-anterior">S/6000</span></p>
+                        <a href="catalogo.html#iphone" class="btn-primary">Ver más</a>
+                    </div>
+                    <div class="product-card">
+                        <img src="Imagenes/xiaomi-17.jpg" alt="Xiaomi 17">
+                        <h3>Xiaomi 17 Pro</h3>
+                        <p class="precio">S/2500</p>
+                        <a href="catalogo.html#xiaomi" class="btn-primary">Ver más</a>
+                    </div>
+                </div>
             </section>
-            <section id="Productos">
-                <h2>Lo Más Vendido</h2>
+
+            <section id="experiencia-tech">
+                <h2>Vive la Experiencia Apex</h2>
+                <p>
+                    Descubre por qué somos los líderes en tecnología móvil y laptops en todo el país.
+                </p>
+                <div>
+                    <video>
+                    <!-- AÑADIR VIDEO DEL ALGUN PRODUCTO -->                  
+                    </video>
+                </div>  
             </section>
-            <section id="Productos">
-                <h2>Categorias</h2>
+
+            <section id="categorias-home" style="padding: 60px 5%;">
+                <h2>Nuestras Categorías</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px;">
+                    <a href="catalogo.html#samsung" style="text-decoration: none; color: inherit;">
+                    <div style="background: white; padding: 40px; border-radius: 15px; text-align: center; border: 1px solid #eee; transition: 0.3s;" onmouseover="this.style.borderColor='#00bfff'" onmouseout="this.style.borderColor='#eee'">
+                        <span style="font-size: 3rem;">📱</span>
+                        <h4 style="margin-top: 15px;">Smartphones</h4>
+                    </div>
+                    </a>
+                    <a href="#" style="text-decoration: none; color: inherit;">
+                    <div style="background: white; padding: 40px; border-radius: 15px; text-align: center; border: 1px solid #eee; transition: 0.3s;" onmouseover="this.style.borderColor='#00bfff'" onmouseout="this.style.borderColor='#eee'">
+                        <span style="font-size: 3rem;">💻</span>
+                        <h4 style="margin-top: 15px;">Laptops</h4>
+                    </div>
+                    </a>
+                    <a href="#" style="text-decoration: none; color: inherit;">
+                    <div style="background: white; padding: 40px; border-radius: 15px; text-align: center; border: 1px solid #eee; transition: 0.3s;" onmouseover="this.style.borderColor='#00bfff'" onmouseout="this.style.borderColor='#eee'">
+                        <span style="font-size: 3rem;">🎧</span>
+                        <h4 style="margin-top: 15px;">Accesorios</h4>
+                    </div>
+                    </a>
+                </div>
             </section>
         </main>
         <footer>
