@@ -1,0 +1,247 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 23 abr. 2026, 5:47:03 p. m.
+    Author     : reyes
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+  margin-top: 80px;
+}
+
+  /*Primera parte de la navegación*/
+.navbar{
+    background: #000;
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.logo{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.menu{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    
+}
+
+.menu li{
+    position: relative;
+}
+
+.menu a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    display: block;
+}
+
+.menu a:hover{
+    color:#00bfff;
+}
+
+
+/*Sub navegación*/
+.dropdown-content{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    min-width: 700px;
+    padding: 20px;
+    border-radius: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.dropdown:hover .dropdown-content {
+  display: grid;
+}
+
+.columna h4 {
+  color: #00bfff;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #00bfff;
+  padding-bottom: 5px;
+}
+
+.columna a {
+  color: #333;
+  padding: 8px 0;
+  display: block;
+}
+
+.columna a:hover {
+  color: #00bfff;
+  padding-left: 10px;
+}
+
+h2,p {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #1a1a1a, #00b7eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 70px 0 40px 0;
+  letter-spacing: -2px;
+}
+
+h3 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin: 60px 0 35px 0;
+  padding: 0 20px;
+  position: relative;
+}
+
+/*Productos*/
+
+.product-container {
+    background: #fff;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    border-radius: 8px;
+}
+
+.product-view {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.product-view img {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.product-view img:hover{
+    transform: scale(1.2);
+}
+        
+.purchase-section {
+    flex: 1;
+    min-width: 300px;
+    padding: 15px;
+    border-left: 1px solid #eee;
+    margin-top: 25px;
+}
+
+.brand {
+    color: #888;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.product-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  position: relative;
+}
+        
+.price-box {
+    margin: 20px 0;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 1.1em;
+}
+
+.current-price {
+    color: #d0021b;
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+}
+       
+.discount-tag {
+    background: #d0021b;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    vertical-align: middle;
+}
+
+.btn-add { 
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn-add:hover {
+    background-color: graytext;
+}
+
+.specs-section {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.specs-table th {
+    background: #f9f9f9;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #eee;
+    width: 40%;
+}
+
+.specs-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    color: #555;
+}
