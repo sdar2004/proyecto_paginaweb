@@ -4,15 +4,14 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+/* MAS DE 2 FORMATOS DE TEXTO APF02*/
 body {
     font-family: 'Segoe UI', system-ui, sans-serif;
     background-color: #f8f9fa;
     color: #333;
-    margin-top: 80px; /* Espacio para el navbar fijo */
+    margin-top: 80px;
 }
 
-/* 2. Header y Navegación (Navbar) */
 .navbar {
     background: #000;
     color: white;
@@ -54,7 +53,6 @@ body {
     color: #00bfff;
 }
 
-/* Sub navegación (Dropdown) */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -126,7 +124,6 @@ body {
     color: #0a0a0a;
 }
 
-/* 5. Tarjetas de Productos (Grid y Cards) */
 .product-grid, .grid-productos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -143,7 +140,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.4s ease;
     text-align: center;
-    position: relative; /* Importante para la etiqueta 'nuevo' */
+    position: relative; 
 }
 
 .product-card:hover {
@@ -171,7 +168,7 @@ body {
 }
 
 .product-card h3::after {
-    display: none; /* Quita la raya de las tarjetas */
+    display: none; 
 }
 
 .product-card .precio {

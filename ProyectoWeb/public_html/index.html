@@ -4,7 +4,7 @@
         <title>Apex Digital</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="Vista/estilo.css" rel="stylesheet" type="text/css"/>
+        <link href="Vista/index.css" rel="stylesheet" type="text/css"/>
         <link href="Vista/global.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     </li>
-                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="Login.html">Iniciar Sesion/Registrarse</a></li>
                     <li><a href="reclamos.html">Reclamos y Sugerencias</a></li>
                 </ul>
             </nav>
@@ -88,31 +88,32 @@
                 <p>
                     Descubre por qué somos los líderes en tecnología móvil y laptops en todo el país.
                 </p>
-                <div>
+                <div class="video_container">
                     <video>
-                    <!-- AÑADIR VIDEO DE ALGUN PRODUCTO -->                  
+                        <source src="Productos/Video/istockphoto-1497908538-640_adpp_is.mp4" type="video/mp4">
+                        Your browser does not support the <code>video</code> tag.
                     </video>
                 </div>  
             </section>
-            <section id="categorias-home" style="padding: 60px 5%;">
+            <section id="categorias-home" class="categoria-home">
                 <h2>Nuestras Categorías</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px;">
-                    <a href="catalogo.html#samsung" style="text-decoration: none; color: inherit;">
-                    <div style="background: white; padding: 40px; border-radius: 15px; text-align: center; border: 1px solid #eee; transition: 0.3s;" onmouseover="this.style.borderColor='#00bfff'" onmouseout="this.style.borderColor='#eee'">
-                        <span style="font-size: 3rem;">📱</span>
-                        <h4 style="margin-top: 15px;">Smartphones</h4>
+                <div>
+                    <a href="catalogo.html#samsung">
+                    <div onmouseover="this.style.borderColor='#00bfff'" onmouseout="this.style.borderColor='#eee'">
+                        <span>📱</span>
+                        <h4>Smartphones</h4>
                     </div>
                     </a>
                     <a href="#" style="text-decoration: none; color: inherit;">
-                    <div style="background: white; padding: 40px; border-radius: 15px; text-align: center; border: 1px solid #eee; transition: 0.3s;" onmouseover="this.style.borderColor='#00bfff'" onmouseout="this.style.borderColor='#eee'">
-                        <span style="font-size: 3rem;">💻</span>
-                        <h4 style="margin-top: 15px;">Laptops</h4>
+                    <div onmouseover="this.style.borderColor='#00bfff'" onmouseout="this.style.borderColor='#eee'">
+                        <span>💻</span>
+                        <h4>Laptops</h4>
                     </div>
                     </a>
                     <a href="#" style="text-decoration: none; color: inherit;">
-                    <div style="background: white; padding: 40px; border-radius: 15px; text-align: center; border: 1px solid #eee; transition: 0.3s;" onmouseover="this.style.borderColor='#00bfff'" onmouseout="this.style.borderColor='#eee'">
-                        <span style="font-size: 3rem;">🎧</span>
-                        <h4 style="margin-top: 15px;">Accesorios</h4>
+                    <div onmouseover="this.style.borderColor='#00bfff'" onmouseout="this.style.borderColor='#eee'">
+                        <span>🎧</span>
+                        <h4>Accesorios</h4>
                     </div>
                     </a>
                 </div>
