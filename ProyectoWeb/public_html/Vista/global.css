@@ -6,24 +6,16 @@
 }
 /* MAS DE 2 FORMATOS DE TEXTO APF02*/
 body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Segoe UI', 'Verdama', sans-serif;
     background-color: #f8f9fa;
     color: #333;
     margin-top: 80px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.navbar {
-    background: #000;
-    color: white;
-    padding: 15px 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    width: 100%;
-}
+
 
 .logo {
     font-size: 1.8rem;
@@ -51,26 +43,6 @@ body {
 
 .menu a:hover {
     color: #00bfff;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    color: #333;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    min-width: 700px;
-    padding: 20px;
-    border-radius: 10px;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.dropdown:hover .dropdown-content {
-    display: grid;
 }
 
 .columna h4 {
@@ -226,6 +198,170 @@ h3.samsung::after, h3.iphone::after {
     height: 3px;
     background: #00b7eb;
     border-radius: 3px;
+}
+
+.header-moderno {
+    background-color: #1a1a1a; /* Fondo oscuro tecnológico */
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-bottom: 3px solid #e60000; /* Acento rojo tipo tienda de tecnología */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+
+/* --- Parte Superior --- */
+.header-moderno .header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-moderno .logo a {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+/* Buscador */
+.header-moderno .search-container {
+    display: flex;
+    flex: 1;
+    margin: 0 40px;
+    max-width: 600px;
+}
+
+.header-moderno .search-container input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    font-size: 15px;
+}
+
+.header-moderno .search-container button {
+    padding: 12px 25px;
+    background-color: #e60000;
+    color: #ffffff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.header-moderno .search-container button:hover {
+    background-color: #cc0000;
+}
+
+/* Iconos de usuario/carrito */
+.header-moderno .header-icons {
+    display: flex;
+    gap: 25px;
+}
+
+.header-moderno .icon-link {
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    transition: color 0.3s;
+}
+
+.header-moderno .icon-link:hover {
+    color: #e60000;
+}
+
+/* --- Parte Inferior (Navegación) --- */
+.header-moderno .main-nav {
+    background-color: #262626;
+}
+
+.header-moderno .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0 5%;
+    max-width: 1400px;
+    gap: 40px;
+    justify-content: flex-end; /* Esta es la línea que alinea todo a la derecha */
+}
+
+.header-moderno .nav-list > li > a {
+    display: block;
+    padding: 16px 0;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.header-moderno .nav-list > li > a:hover {
+    color: #e60000;
+}
+
+/* --- MEGA MENÚ (Desplegable) --- */
+.header-moderno .dropdown {
+    position: relative;
+}
+
+.header-moderno .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    margin-top: -3px; /* Tira el menú ligeramente hacia arriba para ocultar cualquier espacio o sombra */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    width: 850px; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    padding: 25px;
+    z-index: 1000;
+    border-radius: 0 0 8px 8px;
+    border-top: 3px solid #e60000;
+}
+
+/* Activar grid al pasar el mouse por "Productos" */
+.header-moderno .dropdown:hover .dropdown-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.header-moderno .dropdown-column h3 {
+    margin: 0 0 15px 0 !important;   /* Elimina el enorme margen superior de 60px */
+    padding: 0 0 8px 0 !important;   /* Elimina el padding lateral */
+    color: #333333 !important;       /* Restaura el color oscuro original */
+    font-size: 14px !important;
+    font-weight: bold !important;
+    border-bottom: 2px solid #f0f0f0 !important; /* Restaura la línea fina gris clara */
+}
+
+.header-moderno .dropdown-column h3::after {
+    display: none !important;
+}
+
+.header-moderno .dropdown-column a {
+    display: block;
+    color: #666666;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.header-moderno .dropdown-column a:hover {
+    color: #e60000;
+    transform: translateX(5px); /* Pequeño salto a la derecha al hacer hover */
 }
 
 footer{

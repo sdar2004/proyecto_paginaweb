@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-top: -10px;   /* para que quede pegado al header si es necesario */
+    margin-top: 0px;   /* para que quede pegado al header si es necesario */
 }
 
 .hero-overlay {
