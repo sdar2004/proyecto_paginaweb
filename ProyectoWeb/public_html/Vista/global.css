@@ -389,3 +389,7 @@ footer ul{
 footer li{
     margin-bottom: 5px;
 }
+
+.footer:hover{
+    color:#00b7eb;
+}
