@@ -231,7 +231,7 @@ h3.samsung::after, h3.iphone::after {
 .header-moderno .search-container {
     display: flex;
     flex: 1;
-    margin: 0 40px;
+    margin: 0 20px; /* Reducido de 40px a 20px para dar más espacio en pantallas medianas */
     max-width: 600px;
 }
 
@@ -314,26 +314,28 @@ h3.samsung::after, h3.iphone::after {
     position: relative;
 }
 
-.header-moderno .dropdown-content {
+.dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
-    margin-top: -3px; /* Tira el menú ligeramente hacia arriba para ocultar cualquier espacio o sombra */
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0; /* Lo alinea a la derecha del botón PRODUCTOS para que no se salga de la pantalla */
+    left: auto; /* Anula cualquier otra alineación */
+    
+    /* LA SOLUCIÓN AL DESBORDE: */
+    width: max-content; /* Obliga al fondo blanco a estirarse para cubrir todas las columnas */
+    min-width: 800px; /* Le da un ancho base generoso */
+    
     background-color: #ffffff;
-    width: 850px; 
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     padding: 25px;
     z-index: 1000;
     border-radius: 0 0 8px 8px;
     border-top: 3px solid #e60000;
 }
-
 /* Activar grid al pasar el mouse por "Productos" */
-.header-moderno .dropdown:hover .dropdown-content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+.dropdown:hover .dropdown-content {
+    display: flex;
+    justify-content: space-between;
     gap: 20px;
 }
 
@@ -392,4 +394,113 @@ footer li{
 
 .footer:hover{
     color:#00b7eb;
+}
+
+/* ========================================================
+   MEDIA QUERIES (DISEÑO RESPONSIVO - RWD)
+   ======================================================== */
+
+/* --- PARA TABLETS (Pantallas hasta 992px) --- */
+@media (max-width: 992px) {
+    /* Ajustar el espacio de la barra de navegación */
+    .header-moderno .nav-list {
+        gap: 20px;
+        justify-content: center;
+        padding: 0 2%;
+    }
+    
+    /* El mega menú pasa de 4 columnas a 2 columnas */
+    .header-moderno .dropdown:hover .dropdown-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- PARA CELULARES (Pantallas hasta 768px) --- */
+@media (max-width: 768px) {
+    /* 1. Header Principal: Apilar Logo, Buscador e Iconos */
+    .header-moderno .header-main {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    /* El buscador toma el 100% del ancho */
+    .header-moderno .search-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        order: 2; /* Lo pone debajo del logo */
+    }
+
+    /* Los iconos de cuenta/carrito se centran */
+    .header-moderno .header-icons {
+        width: 100%;
+        justify-content: center;
+        gap: 40px;
+        order: 3;
+    }
+
+    /* 2. Navegación: Pasa de horizontal a vertical */
+    .header-moderno .nav-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    /* 3. Mega Menú de Productos para Móviles */
+    .header-moderno .dropdown-content {
+        position: static; 
+        transform: none;
+        width: 100%;
+        min-width: 0; /* Agrega esta línea para anular los 800px en celulares */
+        box-shadow: none;
+        border: none;
+        padding: 15px 0;
+        border-top: 1px solid #eee;
+    }
+
+    /* Pasa a ser de 1 sola columna en el celular */
+    .header-moderno .dropdown:hover .dropdown-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header-moderno .dropdown-column {
+        text-align: center;
+    }
+
+    /* 4. Ajustes Generales de Textos y Contenedores */
+    body {
+        margin-top: 0; /* Ajuste si no usas header fixed */
+    }
+
+    h2 {
+        font-size: 2rem; /* Títulos más pequeños */
+        margin: 40px 0 20px 0;
+    }
+
+    h3.samsung, h3.iphone {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 40px 0 20px 0;
+    }
+
+    h3.samsung::after, h3.iphone::after {
+        left: 50%;
+        transform: translateX(-50%); /* Centra la rayita debajo del título */
+    }
+
+    /* 5. Footer Responsivo */
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .Columna {
+        width: 100%;
+        margin-bottom: 30px;
+    }
 }
