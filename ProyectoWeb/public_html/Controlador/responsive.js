@@ -19,6 +19,14 @@ fetch("HTML/header.html")
                 cargarRecurso("#main",link.dataset.page);
             }
         });
+        document.querySelector("div").addEventListener("click",(e)=>{
+            const link = e.target.closet("a");
+            e.preventDefault();
+            if(link){
+                document.getElementById("prueba-header").checked = false;
+                cargarRecurso("#main",link.dataset.page);
+            }
+        });
     });
 
 
