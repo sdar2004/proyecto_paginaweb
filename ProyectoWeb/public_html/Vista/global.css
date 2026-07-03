@@ -285,6 +285,50 @@ h3.samsung::after, h3.iphone::after {
     color: #e60000;
 }
 
+/* Numerito de cantidad sobre el ícono del carrito */
+.carrito-link {
+    position: relative;
+}
+
+.cart-count {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    margin-left: 2px;
+    border-radius: 999px;
+    background-color: #e60000;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* Aviso flotante al añadir un producto al carrito */
+.cart-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #262626;
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 6px;
+    border-left: 4px solid #e60000;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.cart-toast-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* --- Parte Inferior (Navegación) --- */
 .header-moderno .main-nav {
     background-color: #262626;

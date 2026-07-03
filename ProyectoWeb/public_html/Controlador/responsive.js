@@ -15,6 +15,11 @@ function cargarRecurso(tagSelector, archivo){
                     console.error("Error: La función renderizarCatalogoDinamicamente no está definida en el entorno global.");
                 }
             }
+
+            // Si el recurso inyectado es el carrito, avisamos a carrito.js para que lo pinte
+            if (archivo.includes("carrito.html")) {
+                document.dispatchEvent(new Event("carritoCargado"));
+            }
         })
         .catch(err => console.error("Error al cargar el recurso dinámico: ", err));
 }
@@ -26,7 +31,13 @@ fetch("HTML/header.html")
         document.getElementById("header").innerHTML = html;
         cargarRecurso("#footer", "HTML/footer.html");
         cargarRecurso("#main", "HTML/inicio.html");
-        
+
+        // El ícono del carrito recién existe en el DOM en este punto,
+        // así que reflejamos aquí el contador guardado en localStorage
+        if (typeof window.actualizarContadorCarrito === "function") {
+            window.actualizarContadorCarrito();
+        }
+
         // Delegación de eventos para la barra de navegación superior
         document.querySelector("nav ul").addEventListener("click", (e) => {
             const link = e.target.closest("a");
