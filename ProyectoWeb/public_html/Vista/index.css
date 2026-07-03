@@ -165,3 +165,66 @@ video {
         grid-template-columns: 1fr; /* 1fr significa que 1 sola columna tomará todo el espacio disponible */
     }
 }
+/* =========================================================================
+   ESTILOS ADAPTATIVOS PARA LA SECCIÓN DE CATÁLOGO (RESPONSIVE GRID)
+   ========================================================================= */
+.catalogo-section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.brand-section {
+    margin-bottom: 40px;
+}
+
+.brand-section h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    text-transform: capitalize;
+}
+
+/* El contenedor se reordena solo según la resolución de pantalla */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.add-to-cart {
+    background-color: #0071e3; /* Azul Apple */
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 0; /* Espacio interno vertical */
+    border: none;
+    border-radius: 20px; /* Bordes redondeados tipo cápsula */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    
+    /* ESTO SOLUCIONA EL ESPACIADO Y EL ANCHO */
+    display: block !important; /* El !important asegura que no lo ignore otra regla */
+    width: 85% !important;     /* Hace el botón ancho y estético */
+    margin: 20px auto 10px auto !important; /* 20px de separación obligatoria con el precio */
+    text-align: center;
+}
+
+/* Efecto al pasar el mouse */
+.add-to-cart:hover {
+    background-color: #005bb5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+}
+
+/* Efecto al hacer clic */
+.add-to-cart:active {
+    background-color: #004487;
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
