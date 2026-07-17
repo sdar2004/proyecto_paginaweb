@@ -176,7 +176,7 @@ window.renderizarCatalogoDinamicamente = function() {
         const productCardHtml = `
             <div class="product-card">
                 <div class="product-image">
-                    <a href="${producto.imagen}">
+                    <a href="#" class="ver-producto" data-url="${producto.url}">
                         <img src="${producto.imagen}" alt="${producto.nombre}">
                     </a>
                     ${producto.badge ? `<span class="badge">${producto.badge}</span>` : ''}
@@ -201,6 +201,12 @@ window.renderizarCatalogoDinamicamente = function() {
         if (contenedorDestino) {
             contenedorDestino.innerHTML += productCardHtml;
         }
+    });
+    document.querySelectorAll(".ver-producto").forEach(link => {
+        link.addEventListener("click", function(e){
+            e.preventDefault();
+            cargarRecurso("#main", this.dataset.url);
+        });
     });
 };
 
