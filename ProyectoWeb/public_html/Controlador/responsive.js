@@ -325,3 +325,198 @@ document.addEventListener("click", (e) => {
         }
     }
 });
+// Este es un ejemplo de cómo debería verse la lógica del clic en tu enrutador actual
+document.body.addEventListener('click', function(e) {
+    
+    // Detectamos si se hizo clic en un enlace con 'data-page'
+    const enlace = e.target.closest('[data-page]');
+    
+    if (enlace) {
+        e.preventDefault(); // Evitamos que el navegador salte bruscamente
+        
+        // 1. Capturamos el texto completo: "HTML/catalogo.html#grid-samsung-telefono"
+        const dataPageCompleto = enlace.getAttribute('data-page');
+        
+        // 2. Separamos el archivo del ID usando split('#')
+        const partes = dataPageCompleto.split('#');
+        const rutaArchivo = partes[0]; // Se queda con "HTML/catalogo.html"
+        const idDestino = partes[1];   // Se queda con "grid-samsung-telefono" (o undefined si no tiene #)
+        
+        // 3. Cargamos la página usando SOLO la ruta del archivo
+        fetch(rutaArchivo)
+            .then(respuesta => respuesta.text())
+            .then(codigoHtml => {
+                
+                // Inyectamos el nuevo contenido en tu <section>
+                document.querySelector('section').outerHTML = codigoHtml;
+                
+                // 4. LA MAGIA PARA BAJAR HASTA LA SECCIÓN EXACTA
+                if (idDestino) {
+                    // Usamos setTimeout para darle tiempo al navegador de procesar el nuevo HTML
+                    setTimeout(() => {
+                        const elementoDestino = document.getElementById(idDestino);
+                        if (elementoDestino) {
+                            // Hace un scroll suave hacia el contenedor
+                            elementoDestino.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }, 150); // 150 milisegundos de espera
+                } else {
+                    // Si el enlace no tenía #, simplemente subimos al inicio
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                
+            })
+            .catch(error => console.error("Error cargando la vista:", error));
+    }
+});
+// Función principal para actualizar el texto
+function actualizarHeader() {
+    const usuarioGuardado = localStorage.getItem('usuarioActual');
+    const headerNombreDisplay = document.getElementById('nombreUsuarioHeader');
+    const btnCerrarSesion = document.getElementById('btnCerrarSesion');
+    
+    if (headerNombreDisplay) {
+        if (usuarioGuardado) {
+            // Reemplaza solo lo que está dentro del <span>
+            headerNombreDisplay.textContent = usuarioGuardado;
+            
+            // Muestra el botón de cerrar sesión
+            if(btnCerrarSesion) btnCerrarSesion.style.display = 'inline-block';
+        } else {
+            // Texto por defecto
+            headerNombreDisplay.textContent = "Mi Cuenta";
+            
+            // Oculta el botón de cerrar sesión
+            if(btnCerrarSesion) btnCerrarSesion.style.display = 'none';
+        }
+    }
+}
+
+// Como tu header parece cargar de forma dinámica, buscamos el elemento repetidamente 
+// hasta encontrarlo (cada 100 milisegundos) y luego detenemos la búsqueda.
+const intervaloHeader = setInterval(function() {
+    if (document.getElementById('nombreUsuarioHeader')) {
+        actualizarHeader();
+        clearInterval(intervaloHeader); // Detenemos el intervalo una vez actualizado
+    }
+}, 100);
+
+// Función para cerrar sesión
+function cerrarSesion() {
+    localStorage.removeItem('usuarioActual'); // Borra el usuario guardado
+    window.location.reload(); // Recarga la página
+}
+// Función para procesar el login o registro directamente desde el HTML
+// Función para procesar el login o registro directamente desde el HTML
+function procesarAcceso(evento, tipo) {
+    // Evitamos que la página intente recargarse
+    evento.preventDefault();
+    
+    let nombreUsuario = "";
+    
+    // Obtenemos el nombre según el formulario que se usó
+    if (tipo === 'login') {
+        nombreUsuario = document.getElementById('usuarioLogin').value;
+    } else if (tipo === 'registro') {
+        nombreUsuario = document.getElementById('nombreRegistro').value;
+    }
+    
+    // Si el nombre no está vacío, hacemos la magia
+    if (nombreUsuario && nombreUsuario.trim() !== "") {
+        
+        // 1. Guardamos el nombre en la memoria del navegador
+        localStorage.setItem('usuarioActual', nombreUsuario);
+        
+        // 2. Actualizamos el texto en el Header al instante ("Mi cuenta" -> Nombre)
+        actualizarHeader();
+        
+        // 3. CARGAR INICIO.HTML DINÁMICAMENTE (Solo en el section)
+        // Buscamos la etiqueta <section> que envuelve tu contenido central
+        const seccionPrincipal = document.querySelector('section');
+        
+        // Usamos Fetch para traer el archivo inicio.html sin recargar la página
+        fetch('HTML/inicio.html')
+            .then(respuesta => {
+                if (!respuesta.ok) throw new Error('Error al cargar la página de inicio');
+                return respuesta.text();
+            })
+            .then(codigoHtml => {
+                // Reemplazamos el login con el contenido de inicio.html
+                if (seccionPrincipal) {
+                    seccionPrincipal.outerHTML = codigoHtml;
+                }
+                
+                // Opcional: Subimos la pantalla al inicio de forma suave
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            })
+            .catch(error => {
+                console.error('Hubo un problema:', error);
+                alert("Inicio de sesión exitoso, pero hubo un error al cargar la vista de inicio.");
+            });
+    }
+}
+function cambiarPestana(pestana) {
+            const formLogin = document.getElementById('formLogin');
+            const formRegistro = document.getElementById('formRegistro');
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegistro = document.getElementById('tab-registro');
+
+            if (pestana === 'login') {
+                formLogin.classList.add('activo');
+                formRegistro.classList.remove('activo');
+                tabLogin.classList.add('activo');
+                tabRegistro.classList.remove('activo');
+            } else {
+                formRegistro.classList.add('activo');
+                formLogin.classList.remove('activo');
+                tabRegistro.classList.add('activo');
+                tabLogin.classList.remove('activo');
+            }
+        }
+// Esperar a que el DOM cargue
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. Revisar si hay un usuario guardado al cargar CUALQUIER página
+    const usuarioGuardado = localStorage.getItem('usuarioActual');
+    const headerNombreDisplay = document.getElementById('nombreUsuarioHeader');
+    
+    // Si existe el elemento en el header, actualizamos su texto
+    if (headerNombreDisplay) {
+        if (usuarioGuardado) {
+            headerNombreDisplay.textContent = usuarioGuardado; // Muestra el nombre
+        } else {
+            headerNombreDisplay.textContent = "Mi cuenta"; // Por defecto
+        }
+    }
+
+    // 2. Lógica para el formulario de Login (si estamos en login.html)
+    const formLogin = document.getElementById('formLogin');
+    if (formLogin) {
+        formLogin.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const usuarioIngresado = document.getElementById('usuarioLogin').value;
+            
+            // Guardamos la variable en la memoria del navegador
+            localStorage.setItem('usuarioActual', usuarioIngresado);
+            
+            // Redirigimos al inicio (ajusta la ruta según tus carpetas, ej: 'inicio.html')
+            window.location.href = "inicio.html"; 
+        });
+    }
+
+    // 3. Lógica para el formulario de Registro (si estamos en login.html)
+    const formRegistro = document.getElementById('formRegistro');
+    if (formRegistro) {
+        formRegistro.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Para el registro, tomamos el nombre
+            const nombreIngresado = document.getElementById('nombreRegistro').value;
+            
+            // Guardamos la variable
+            localStorage.setItem('usuarioActual', nombreIngresado);
+            
+            // Redirigimos al inicio
+            window.location.href = "inicio.html"; 
+        });
+    }
+});

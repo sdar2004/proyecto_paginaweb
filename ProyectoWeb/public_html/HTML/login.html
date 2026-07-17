@@ -1,0 +1,30 @@
+<section id="login-section" class="login-wrapper">
+    <div class="login-container">
+
+        <!-- Pestañas (Uno al lado del otro) -->
+        <div class="login-tabs">
+            <button type="button" id="tab-login" class="tab-btn activo" onclick="cambiarPestana('login')">Iniciar Sesión</button>
+            <button type="button" id="tab-registro" class="tab-btn" onclick="cambiarPestana('registro')">Registrarse</button>
+        </div>
+
+        <!-- Formulario de Iniciar Sesión (Activo por defecto) -->
+        <!-- OJO: Aquí llamamos a procesarAcceso -->
+        <form id="formLogin" class="formulario activo" onsubmit="procesarAcceso(event, 'login')">
+            <h2>Bienvenido de nuevo</h2>
+            <input type="text" id="usuarioLogin" placeholder="Ingresa tu usuario" required>
+            <input type="password" id="passLogin" placeholder="Contraseña" required>
+            <button type="submit" class="btn-submit">Ingresar</button>
+        </form>
+
+        <!-- Formulario de Registro (Oculto por defecto) -->
+        <!-- OJO: Aquí llamamos a procesarAcceso -->
+        <form id="formRegistro" class="formulario" onsubmit="procesarAcceso(event, 'registro')">
+            <h2>Crea tu cuenta</h2>
+            <input type="text" id="nombreRegistro" placeholder="Nombre completo" required>
+            <input type="email" id="correoRegistro" placeholder="Correo electrónico" required>
+            <input type="password" id="passRegistro" placeholder="Contraseña" required>
+            <button type="submit" class="btn-submit">Registrarme</button>
+        </form>
+
+    </div>
+</section>

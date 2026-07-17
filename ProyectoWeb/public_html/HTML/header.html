@@ -5,13 +5,17 @@
             <a href="#">APEX DIGITAL</a>
         </div>
 
-        <div class="search-container">
+        <div class="search-container" >
             <input type="text" id="searchInput" placeholder="Buscar productos, marcas y más...">
             <button type="button" id="searchBtn">Buscar</button>
         </div>
 
         <div class="header-icons">
-            <a href="#" data-page="HTML/login.html" class="icon-link">👤 <span>Mi Cuenta</span></a>
+            <!-- El id="nombreUsuarioHeader" ahora está SOLO en el <span> -->
+            <a href="#" data-page="HTML/login.html" class="icon-link">👤 <span id="nombreUsuarioHeader">Mi Cuenta</span></a>
+
+            <a href="#" id="btnCerrarSesion" style="display: none; font-size: 12px; color: red;" onclick="cerrarSesion()">Cerrar sesión</a>
+
             <a href="#" class="icon-link carrito-link">🛒 <span>Carrito</span></a>
         </div>
     </div>
@@ -26,28 +30,28 @@
                 <div class="dropdown-content">
                     <div class="dropdown-column">
                         <h3>Smartphones</h3>
-                        <a href="#">Samsung Galaxy</a>
-                        <a href="#">Iphone</a>
-                        <a href="#">Xiaomi</a>
-                        <a href="#">Google Pixel</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-samsung-telefono">Samsung Galaxy</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-apple-telefono">Iphone</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-xiaomi-telefono">Xiaomi</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-reacondicionados">Reacondicionados</a>
                     </div>
                     <div class="dropdown-column">
                         <h3>Laptops & Tablets</h3>
-                        <a href="#">MacBook</a>
-                        <a href="#">Laptops Windows</a>
-                        <a href="#">iPad</a>
-                        <a href="#">Tablets Samsung</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-apple-laptop">MacBook</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-asus-laptop">Laptops Windows</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-tablet">iPad</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-tablet">Tablets Samsung</a>
                     </div>
                     <div class="dropdown-column">
                         <h3>Accesorios</h3>
-                        <a href="#">Cargadores</a>
-                        <a href="#">Audífonos</a>
-                        <a href="#">Smartwatch</a>
-                        <a href="#">Fundas y protectores</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-cargadores">Cargadores</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-audifonos">Audífonos</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-smartwatch">Smartwatch</a>
+                        <a href="#" data-page="HTML/catalogo.html#grid-fundas">Fundas y protectores</a>
                     </div>
                     <div class="dropdown-column">
                         <h3>Ofertas Únicas</h3>
-                        <a href="#">Reacondicionados</a>
+                        <a href="#" data-page="HTML/ofertas.html">Ofertas Exclusivas</a>
                     </div>
                 </div>
             </li>

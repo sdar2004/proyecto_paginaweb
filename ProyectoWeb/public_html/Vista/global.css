@@ -98,6 +98,23 @@ body {
     color: #0a0a0a;
 }
 
+header {
+    /* 1. Lo hace "pegajoso" al hacer scroll */
+    position: sticky; 
+    
+    /* 2. Le indica que se pegue exactamente en el borde superior de la pantalla */
+    top: 0; 
+    
+    /* 3. Evita que las imágenes o productos del catálogo lo tapen al bajar */
+    z-index: 999; 
+    
+    /* (Opcional) Te recomiendo asegurarte de que tenga un color de fondo sólido 
+       para que no se vuelva transparente al pasar por encima del texto */
+    background-color: #1a1a1a; /* Pon el color oscuro que ya usas */
+    
+    /* (Opcional) Una pequeña sombra abajo ayuda a que resalte al hacer scroll */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
 .product-grid, .grid-productos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
