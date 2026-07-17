@@ -184,6 +184,14 @@ document.addEventListener("click", (e) => {
         return;
     }
 
+    // Botón "Añadir al carrito" en las páginas individuales de los productos
+    const botonAñadir1 = e.target.closest(".btn-add");
+    if (botonAñadir1) {
+        e.preventDefault();
+        añadirAlCarrito(botonAñadir1.dataset.id);
+        return;
+    }
+
     // Ícono 🛒 del header: abre la página del carrito
     const iconoCarrito = e.target.closest(".carrito-link");
     if (iconoCarrito) {
