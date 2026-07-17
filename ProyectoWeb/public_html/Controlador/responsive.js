@@ -84,6 +84,15 @@ function cargarRecurso(tagSelector, archivo, callback = null){
                         window.renderizarCatalogoDinamicamente();
                     }
                 }
+                
+                // ==========================================================
+                // NUEVO: EJECUTAR RENDERIZADOR DE OFERTAS
+                // ==========================================================
+                if (archivo.includes("ofertas.html")) {
+                    if (typeof window.renderizarOfertas === 'function') {
+                        window.renderizarOfertas();
+                    }
+                }
             }
 
             // Si el recurso inyectado es el carrito, avisamos a carrito.js para que lo pinte
@@ -257,3 +266,62 @@ window.renderizarResultadosBusqueda = function(productosFiltrados, termino) {
         contenedor.innerHTML += productCardHtml;
     });
 };
+window.renderizarOfertas = function() {
+    const gridOfertas = document.getElementById("grid-ofertas-relampago");
+    if (!gridOfertas) return; // Si no encuentra la grilla en ofertas.html, no hace nada
+
+    gridOfertas.innerHTML = "";
+
+    // Seleccionamos los IDs de los productos que quieres mostrar en tu sección de ofertas
+    // (Por ejemplo: Samsung S25 Ultra (1), iPhone 17 Pro Max (5), Xiaomi 17 (9), etc.)
+    const idsEnOferta = [1, 5, 9, 14, 18, 25]; 
+
+    const productosFiltrados = productos.filter(producto => idsEnOferta.includes(producto.id));
+
+    // Renderizamos las tarjetas usando las clases exactas de tu diseño css
+    productosFiltrados.forEach(producto => {
+        const productCardHtml = `
+            <div class="product-card">
+                <div class="product-image">
+                    <a href="${producto.imagen}">
+                        <img src="${producto.imagen}" alt="${producto.nombre}">
+                    </a>
+                    <span class="badge" style="background-color: #00abf0;">Oferta</span>
+                </div>
+                <h3>${producto.nombre}</h3>
+                <p class="precio">
+                    <span class="precio-oferta" style="color: #00abf0; font-weight: bold;">${producto.precioOferta}</span>
+                    <span class="precio-anterior" style="text-decoration: line-through; color: #888;">${producto.precioAnterior}</span>
+                </p>
+                <button class="add-to-cart" data-id="${producto.id}">Añadir al Carrito</button>
+            </div>
+        `;
+        gridOfertas.innerHTML += productCardHtml;
+    });
+};
+document.addEventListener("click", (e) => {
+    // Escuchamos el clic directamente en tu clase CSS original "categoria-div"
+    const btn = e.target.closest(".categoria-div");
+    
+    if (btn) {
+        e.preventDefault();
+        
+        const pagina = btn.dataset.page;     
+        const targetId = btn.dataset.target; 
+
+        if (pagina) {
+            cargarRecurso("#main", pagina, () => {
+                if (typeof window.renderizarCatalogoDinamicamente === 'function') {
+                    window.renderizarCatalogoDinamicamente();
+                }
+                
+                setTimeout(() => {
+                    const seccionDestino = document.getElementById(targetId);
+                    if (seccionDestino) {
+                        seccionDestino.scrollIntoView({ behavior: "smooth", block: "center" });
+                    }
+                }, 150);
+            });
+        }
+    }
+});
