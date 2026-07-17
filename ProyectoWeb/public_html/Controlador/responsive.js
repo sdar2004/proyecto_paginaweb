@@ -1,14 +1,14 @@
 
-
+// Lógica del Buscador
 document.addEventListener("DOMContentLoaded", () => {
     const searchBtn = document.getElementById("searchBtn");
     const searchInput = document.getElementById("searchInput");
     
-    
+    // Ejecutar búsqueda al hacer clic en el botón
     if(searchBtn && searchInput) {
         searchBtn.addEventListener("click", ejecutarBusqueda);
         console.log("SI FUNCIONA EL CLICK");
-      
+        // Ejecutar búsqueda al presionar "Enter" en el teclado
         searchInput.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
                 ejecutarBusqueda();
@@ -23,27 +23,27 @@ function ejecutarBusqueda() {
     const seccionResultados = document.getElementById("search-results-section");
     const seccionTodos = document.getElementById("all-products-section");
 
-    
+    // Si el buscador está vacío, volvemos a mostrar el catálogo completo
     if (query === "") {
         seccionResultados.style.display = "none";
         seccionTodos.style.display = "block";
         return;
     }
 
-   
+    // Algoritmo de filtrado sobre el array 'productos'
     const resultadosFiltrados = productos.filter(producto => 
         producto.nombre.toLowerCase().includes(query) || 
         producto.marca.toLowerCase().includes(query) ||
         producto.categoria.toLowerCase().includes(query)
     );
 
-   
+    // Limpiar resultados anteriores en el DOM
     resultadosDiv.innerHTML = "";
 
-  
+    // Renderizar los nuevos resultados
     if (resultadosFiltrados.length > 0) {
         resultadosFiltrados.forEach(prod => {
-        
+            // Nota: Adapta las clases CSS de este HTML interno según tu diseño en global.css o catalogo.css
             resultadosDiv.innerHTML += `
                 <div class="producto-card" data-id="${prod.id}">
                     <span class="badge">${prod.badge}</span>
@@ -56,15 +56,17 @@ function ejecutarBusqueda() {
             `;
         });
     } else {
-        
+        // Mensaje si no hay coincidencias
         resultadosDiv.innerHTML = "<p>No se encontraron productos que coincidan con tu búsqueda.</p>";
     }
 
-    
+    // Ocultar el catálogo general y mostrar la sección de resultados
     seccionTodos.style.display = "none";
     seccionResultados.style.display = "block";
 }
-
+// =========================================================================
+// FUNCIÓN PARA CARGAR DE FORMA DINÁMICA FRAGMENTOS HTML
+// =========================================================================
 function cargarRecurso(tagSelector, archivo, callback = null){
     const elemento = document.querySelector(tagSelector);
     fetch(archivo)
@@ -72,11 +74,11 @@ function cargarRecurso(tagSelector, archivo, callback = null){
         .then(html => {
             elemento.innerHTML = html;
 
-            
+            // Si pasamos una función callback, la ejecutamos prioritariamente
             if (callback) {
                 callback();
             } else {
-                
+                // Comportamiento por defecto al cargar catálogo sin filtros
                 if (archivo.includes("catalogo.html")) {
                     if (typeof window.renderizarCatalogoDinamicamente === 'function') {
                         window.renderizarCatalogoDinamicamente();
@@ -84,7 +86,7 @@ function cargarRecurso(tagSelector, archivo, callback = null){
                 }
             }
 
-            
+            // Si el recurso inyectado es el carrito, avisamos a carrito.js para que lo pinte
             if (archivo.includes("carrito.html")) {
                 document.dispatchEvent(new Event("carritoCargado"));
             }
@@ -92,6 +94,7 @@ function cargarRecurso(tagSelector, archivo, callback = null){
         .catch(err => console.error("Error al cargar el recurso dinámico: ", err));
 }
 
+// Inicialización del ecosistema de la página principal
 fetch("HTML/header.html")
     .then(rpta => rpta.text())
     .then(html => {
@@ -99,12 +102,14 @@ fetch("HTML/header.html")
         cargarRecurso("#footer", "HTML/footer.html");
         cargarRecurso("#main", "HTML/inicio.html");
 
-        
+        // El ícono del carrito recién existe en el DOM en este punto
         if (typeof window.actualizarContadorCarrito === "function") {
             window.actualizarContadorCarrito();
         }
 
-   
+        // Delegación de eventos para la navegación interna (SPA).
+        // Escucha en todo el documento, así funciona tanto en el menú
+        // superior (header) como en los enlaces del footer.
         document.addEventListener("click", (e) => {
             const link = e.target.closest("a[data-page]");
             if (link) {
@@ -116,31 +121,33 @@ fetch("HTML/header.html")
             }
         });
 
-        
+        // =========================================================================
+        // MOTOR DE BÚSQUEDA REDIRIGIENDO A resultados.html
+        // =========================================================================
         const inputBusqueda = document.querySelector(".search-container input");
         const btnBuscar = document.querySelector(".search-container button");
 
         const realizarBusqueda = () => {
             const termino = inputBusqueda.value.trim();
 
-            if (termino === "") return; 
+            if (termino === "") return; // Si la búsqueda está vacía, no hace nada
 
             const terminoMinuscula = termino.toLowerCase();
 
-            
+            // Filtrar productos por nombre, marca o categoría
             const productosFiltrados = productos.filter(p => 
                 p.nombre.toLowerCase().includes(terminoMinuscula) ||
                 p.marca.toLowerCase().includes(terminoMinuscula) ||
                 p.categoria.toLowerCase().includes(terminoMinuscula)
             );
 
-            
+            // Cargamos la nueva página de resultados y renderizamos los productos filtrados
             cargarRecurso("#main", "HTML/resultados.html", () => {
                 window.renderizarResultadosBusqueda(productosFiltrados, termino);
             });
         };
 
-        
+        // Escuchar eventos de clic y "Enter"
         if (btnBuscar && inputBusqueda) {
             btnBuscar.addEventListener("click", realizarBusqueda);
             inputBusqueda.addEventListener("keypress", (e) => {
@@ -151,7 +158,9 @@ fetch("HTML/header.html")
         }
     });
 
-
+// =========================================================================
+// MOTOR DE RENDERIZADO ASÍNCRONO DEL CATÁLOGO ORIGINAL (Se mantiene intacto)
+// =========================================================================
 window.renderizarCatalogoDinamicamente = function() {
     const contenedores = document.querySelectorAll('.product-grid');
     if (contenedores.length === 0) return;
@@ -195,6 +204,9 @@ window.renderizarCatalogoDinamicamente = function() {
     });
 };
 
+// =========================================================================
+// NUEVO: RENDERIZADO EXCLUSIVO PARA LA PÁGINA DE RESULTADOS DE BÚSQUEDA
+// =========================================================================
 window.renderizarResultadosBusqueda = function(productosFiltrados, termino) {
     const contenedor = document.getElementById('grid-resultados');
     const queryText = document.getElementById('search-query-text');
@@ -207,7 +219,7 @@ window.renderizarResultadosBusqueda = function(productosFiltrados, termino) {
         queryText.textContent = `Mostrando resultados para: "${termino}" (${productosFiltrados.length} encontrados)`;
     }
 
-   
+    // Si no hay productos que coincidan
     if (productosFiltrados.length === 0) {
         contenedor.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
@@ -218,7 +230,7 @@ window.renderizarResultadosBusqueda = function(productosFiltrados, termino) {
         return;
     }
 
-    
+    // Si hay coincidencias, pintar los productos
     productosFiltrados.forEach(producto => {
         const productCardHtml = `
             <div class="product-card">

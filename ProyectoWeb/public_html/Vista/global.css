@@ -1,10 +1,10 @@
-
+/* 1. Reset y Body */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+/* MAS DE 2 FORMATOS DE TEXTO APF02*/
 body {
     font-family: 'Segoe UI', 'Verdama', sans-serif;
     background-color: #f8f9fa;
@@ -207,15 +207,15 @@ h3.samsung::after, h3.iphone::after {
 }
 
 .header-moderno {
-    background-color: #1a1a1a; 
+    background-color: #1a1a1a; /* Fondo oscuro tecnológico */
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-bottom: 3px solid #e60000; 
+    border-bottom: 3px solid #e60000; /* Acento rojo tipo tienda de tecnología */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     margin: 0;
 }
 
-
+/* --- Parte Superior --- */
 .header-moderno .header-main {
     display: flex;
     justify-content: space-between;
@@ -233,10 +233,11 @@ h3.samsung::after, h3.iphone::after {
     letter-spacing: 1px;
 }
 
+/* Buscador */
 .header-moderno .search-container {
     display: flex;
     flex: 1;
-    margin: 0 20px; 
+    margin: 0 20px; /* Reducido de 40px a 20px para dar más espacio en pantallas medianas */
     max-width: 600px;
 }
 
@@ -284,7 +285,7 @@ h3.samsung::after, h3.iphone::after {
     color: #e60000;
 }
 
-
+/* Numerito de cantidad sobre el ícono del carrito */
 .carrito-link {
     position: relative;
 }
@@ -305,7 +306,7 @@ h3.samsung::after, h3.iphone::after {
     line-height: 1;
 }
 
-
+/* Aviso flotante al añadir un producto al carrito */
 .cart-toast {
     position: fixed;
     bottom: 24px;
@@ -328,7 +329,7 @@ h3.samsung::after, h3.iphone::after {
     transform: translateY(0);
 }
 
-
+/* --- Parte Inferior (Navegación) --- */
 .header-moderno .main-nav {
     background-color: #262626;
 }
@@ -340,7 +341,7 @@ h3.samsung::after, h3.iphone::after {
     padding: 0 5%;
     max-width: 1400px;
     gap: 40px;
-    justify-content: flex-end; 
+    justify-content: flex-end; /* Esta es la línea que alinea todo a la derecha */
 }
 
 .header-moderno .nav-list > li > a {
@@ -358,7 +359,7 @@ h3.samsung::after, h3.iphone::after {
     color: #e60000;
 }
 
-
+/* --- MEGA MENÚ (Desplegable) --- */
 .header-moderno .dropdown {
     position: relative;
 }
@@ -367,12 +368,12 @@ h3.samsung::after, h3.iphone::after {
     display: none;
     position: absolute;
     top: 100%;
-    right: 0; 
-    left: auto; 
+    right: 0; /* Lo alinea a la derecha del botón PRODUCTOS para que no se salga de la pantalla */
+    left: auto; /* Anula cualquier otra alineación */
 
-    
-    width: max-content; /
-    min-width: 800px; 
+    /* LA SOLUCIÓN AL DESBORDE: */
+    width: max-content; /* Obliga al fondo blanco a estirarse para cubrir todas las columnas */
+    min-width: 800px; /* Le da un ancho base generoso */
 
     background-color: #ffffff;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
@@ -381,7 +382,7 @@ h3.samsung::after, h3.iphone::after {
     border-radius: 0 0 8px 8px;
     border-top: 3px solid #e60000;
 }
-
+/* Activar grid al pasar el mouse por "Productos" */
 .dropdown:hover .dropdown-content {
     display: flex;
     justify-content: space-between;
@@ -389,12 +390,12 @@ h3.samsung::after, h3.iphone::after {
 }
 
 .header-moderno .dropdown-column h3 {
-    margin: 0 0 15px 0 !important;   
-    padding: 0 0 8px 0 !important;   
-    color: #333333 !important;       
+    margin: 0 0 15px 0 !important;   /* Elimina el enorme margen superior de 60px */
+    padding: 0 0 8px 0 !important;   /* Elimina el padding lateral */
+    color: #333333 !important;       /* Restaura el color oscuro original */
     font-size: 14px !important;
     font-weight: bold !important;
-    border-bottom: 2px solid #f0f0f0 !important; 
+    border-bottom: 2px solid #f0f0f0 !important; /* Restaura la línea fina gris clara */
 }
 
 .header-moderno .dropdown-column h3::after {
@@ -412,7 +413,7 @@ h3.samsung::after, h3.iphone::after {
 
 .header-moderno .dropdown-column a:hover {
     color: #e60000;
-    transform: translateX(5px); 
+    transform: translateX(5px); /* Pequeño salto a la derecha al hacer hover */
 }
 
 footer{
@@ -451,6 +452,9 @@ a.footer{
     color:#00b7eb;
 }
 
+/* ========================================================
+   MEDIA QUERIES (DISEÑO RESPONSIVO - RWD)
+   ======================================================== */
 
 @media (max-width: 992px) {
     .header-moderno .nav-list {
