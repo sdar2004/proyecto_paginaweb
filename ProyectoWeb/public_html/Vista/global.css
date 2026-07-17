@@ -442,6 +442,12 @@ footer li{
     margin-bottom: 5px;
 }
 
+a.footer{
+    color:#fff;
+    text-decoration:none;
+    cursor:pointer;
+}
+
 .footer:hover{
     color:#00b7eb;
 }

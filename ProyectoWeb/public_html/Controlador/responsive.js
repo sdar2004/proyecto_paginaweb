@@ -107,13 +107,17 @@ fetch("HTML/header.html")
             window.actualizarContadorCarrito();
         }
 
-        // Delegación de eventos para la barra de navegación superior
-        document.querySelector("nav ul").addEventListener("click", (e) => {
-            const link = e.target.closest("a");
+        // Delegación de eventos para la navegación interna (SPA).
+        // Escucha en todo el documento, así funciona tanto en el menú
+        // superior (header) como en los enlaces del footer.
+        document.addEventListener("click", (e) => {
+            const link = e.target.closest("a[data-page]");
             if (link) {
                 e.preventDefault();
-                document.getElementById("prueba-header").checked = false;
+                const checkboxHeader = document.getElementById("prueba-header");
+                if (checkboxHeader) checkboxHeader.checked = false;
                 cargarRecurso("#main", link.dataset.page);
+                window.scrollTo({ top: 0, behavior: "smooth" });
             }
         });
 
